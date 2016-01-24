@@ -31,4 +31,11 @@ aug set_repl_cmd
         \ elseif &filetype == 'elixir' |
         \   call neoterm#repl#set('iex') |
         \ endif
+  " Clojure
+  au BufEnter *
+        \ if &filetype == 'clojure' && filereadable('build.boot') |
+        \   call neoterm#repl#set('boot') |
+        \ elseif &filetype == 'clojure' && filereadable('project.clj') |
+        \   call neoterm#repl#set('lein') |
+        \ end
 aug END
